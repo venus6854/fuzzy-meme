@@ -1,0 +1,13 @@
+node_modules
+target
+dist
+__tests__/*.json
+/coverage
+.DS_Store
+.secrets
+.idea
+.yalc
+yalc.lock
+/rust/pst/contract/definition/bindings
+logs
+cache

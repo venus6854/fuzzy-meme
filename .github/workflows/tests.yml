@@ -1,0 +1,25 @@
+name: CI
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - uses: jetli/wasm-pack-action@v0.3.0
+        with:
+          version: 'latest'
+      - name: Rust - install
+        run: yarn
+        working-directory: rust/pst
+      - name: Rust - build
+        run: yarn build
+        working-directory: rust/pst
+      - name: Rust - generate bindings
+        run: yarn gen-bindings
+        working-directory: rust/pst
+      - name: Rust - run tests
+        run: yarn test
+        working-directory: rust/pst
